@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+</head>
+
+<body>
+
+
+  <!--  SINGLE FILE -->
+  <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+    <label for="NameBox">Elegir: </label><input type="file" name="myFile" id="FileBox" />
+
+    <input type="submit" value="Upload a file" />
+  </form>
+
+  <label for="NameBox">Name: </label><input type="text" id="NameBox">
+  <!-- MULTIPLE FILES
+
+<form action="/uploadmultiple"  enctype="multipart/form-data" method="POST">
+  Select images: <input type="file" name="myFiles" multiple>
+  <input type="submit" value="Upload your files"/>
+</form>-->
+
+  <!--   PHOTO
+
+<form action="/upload/photo" enctype="multipart/form-data" method="POST">
+  <input type="file" name="myImage" accept="image/*" />
+  <input type="submit" value="Upload Photo"/>
+</form>-->
+
+  <script type="text/javascript">
+    window.addEventListener("load", Ready);
+    const kiloByte = 1024;
+    const megaByte = kiloByte * kiloByte
+
+    function Ready() {
+      if (window.File && window.FileReader) { //These are the relevant HTML5 objects that we are going to use
+        //document.getElementById('UploadButton').addEventListener('click', StartUpload);
+        document.getElementById('FileBox').addEventListener('change', FileChosen);
+      } else {
+        //document.getElementById('UploadArea').innerHTML = "Your Browser Doesn't Support The File API Please Update Your Browser";
+      }
+    }
+
+    function FileChosen(event) {
+      console.log(event);
+      SelectedFile = event.target.files[0];
+      document.getElementById('NameBox').value = SelectedFile.name;
+    }
+  </script>
+
+</body>
+
+</html>
